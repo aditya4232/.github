@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Detect package.json
+      - name: Detect lockfile
         id: pkg
-        run: test -f package.json && echo "has=true" >> "$GITHUB_OUTPUT" || echo "has=false" >> "$GITHUB_OUTPUT"
+        run: test -f package-lock.json && echo "has=true" >> "$GITHUB_OUTPUT" || echo "has=false" >> "$GITHUB_OUTPUT"
       - if: steps.pkg.outputs.has == 'true'
         uses: actions/setup-node@v4
         with:
